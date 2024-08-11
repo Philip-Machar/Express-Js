@@ -21,8 +21,20 @@ let posts = [
     {id: 3, title: 'three'}
 ];
 
+//Get all posts
 app.get('/api/posts', (req, res) => {
-    res.json(posts);
+    let limit = parseInt(req.query.limit);
+    if (!isNaN(limit) & limit > 0){
+        res.status(200).json(posts.slice(0, limit));
+    } else {
+        res.status(200).json(posts);
+    }
+});
+
+//Get a single post
+app.get('/api/post/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    res.json(posts.filter((post) => post.id === id));
 });
 
 port = process.env.PORT || 8000;
