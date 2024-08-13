@@ -23,4 +23,4 @@ async function showPosts() {
 }
 
 // Event listener
-getPostsBtn.addEventListener('click', showPosts); // Removed the parentheses to pass function reference
+getPostsBtn.addEventListener('click', showPosts); 
